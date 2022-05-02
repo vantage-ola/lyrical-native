@@ -1,20 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+//import StartScreen from './components/StartScreen'; 
+import SearchBar from './components/SearchBar';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Lyrical!</Text>
-      <StatusBar style="auto" />
+    <View style={styles.default}>
+      <SearchBar />
     </View>
   );
 }
+;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  default:  {
+    flex: 1,    
+    backgroundColor: 'rgb(19, 19, 19)',
+    fontFamily: 'Lato'
+    
+  }
 });
