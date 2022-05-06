@@ -1,14 +1,15 @@
 import React from "react";
 import { View, Text } from "react-native";
+import { Styles } from "./Grid.Styles";
 
-const Grid = ({ header, children}) => {
+const Grid = props => {
     return(
-        <View>
-            <Text>{header}</Text>
-            <Text>{children}</Text>
+        <View >
+            <Text style={Styles.text} >{props.header}</Text>
+            {props.children}
 
         </View>
     )
 };
 
-export default Grid;
+export default Grid; 
