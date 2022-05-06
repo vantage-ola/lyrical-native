@@ -24,7 +24,8 @@ const SearchBar= ({ setSearchTerm}) => {
         <View style={Styles.view}>
             <TextInput 
                 placeholder="Search Songs and Lyrics..." 
-                style={Styles.input} 
+                style={Styles.input}
+                placeholderTextColor="white"
                 // Remove border outline when clicked.
                 // Change placeholder text colour.
                 onChange={ event => setState(event.currentTarget.value)}

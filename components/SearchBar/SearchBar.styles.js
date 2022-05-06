@@ -2,11 +2,11 @@ import { StyleSheet } from "react-native";
 
 export const Styles = StyleSheet.create({
     view: {
-        flex: 1,
+        
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: "130%",
-
+        paddingTop: 40,
+        
         
     },
     input: {
