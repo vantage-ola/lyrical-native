@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 //import StartScreen from './components/StartScreen'; 
 import SearchBar from './components/SearchBar';
 import Thumb from './components/Thumb';
@@ -14,7 +14,20 @@ export default function App() {
   return (
     <View style={styles.default}>
       <SearchBar  setSearchTerm={setSearchTerm}/>
-      <Grid header={searchTerm}></Grid>
+      {state.search ? (
+        <Grid header={searchTerm}>
+        {state.search.map(result => (
+          <View key={result.result.id}>
+
+            <Image style={{width: 400, height: 300 }}source={{ uri: `${result.result.header_image_url}` }}/>
+            <Text>{result.result.title} </Text>
+            
+          </View>
+
+      ))}
+      </Grid>
+      ): null}
+
     </View>
   );
 }
@@ -27,4 +40,5 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato'
     
   }
+
 });
