@@ -1,44 +1,41 @@
-import { StyleSheet, View, Text, Image } from 'react-native';
-//import StartScreen from './components/StartScreen'; 
-import SearchBar from './components/SearchBar';
-import Thumb from './components/Thumb';
-import Grid from './components/Grid';
+// design adapated from https://www.codiculum.com/tutorial/2021/04/movie-app-with-react-native/
+import * as React from "react";
+import { NavigationContainer, DarkTheme  } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import HomeTab from "./tabs/home";
+import SearchTab from "./tabs/search";
+import { Ionicons } from "@expo/vector-icons";
 
-import { useLyricFetch } from './hooks/useLyricFetch';
+const Tab = createBottomTabNavigator();
 
 export default function App() {
-
-  const {state, loading, searchTerm, setSearchTerm, error} = useLyricFetch();
-  console.log(state)
-  
   return (
-    <View style={styles.default}>
-      <SearchBar  setSearchTerm={setSearchTerm}/>
-      {state.search ? (
-        <Grid header={searchTerm}>
-        {state.search.map(result => (
-          <View key={result.result.id}>
+    <NavigationContainer theme={DarkTheme}>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
 
-            <Image style={{width: 400, height: 300 }}source={{ uri: `${result.result.header_image_url}` }}/>
-            <Text>{result.result.title} </Text>
-            
-          </View>
+            if (route.name === "Home") {
+              iconName = focused ? "ios-home" : "ios-home-outline";
+            } else if (route.name === "Search") {
+              iconName = focused ? "ios-search" : "ios-search-outline";
+            }
 
-      ))}
-      </Grid>
-      ): null}
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: "#e8c310",
+          inactiveTintColor: "gray",
+          labelPosition: "below-icon",
+  
+        }}
 
-    </View>
+      >
+        <Tab.Screen name="Home" component={HomeTab} />
+        <Tab.Screen name="Search" component={SearchTab} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-;
-
-const styles = StyleSheet.create({
-  default:  {
-    flex: 1,    
-    backgroundColor: 'rgb(19, 19, 19)',
-    fontFamily: 'Lato'
-    
-  }
-
-});
