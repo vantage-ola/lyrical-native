@@ -1,35 +1,36 @@
-import { useState, useEffect } from 'react';
-import API from '../API';
+import React , { useState, useEffect } from 'react';
+import {
+    API_KEY,
+    API_SEARCH_URL,
+    API_URL
+   } from '../config'
 
 const initialState = {
-	response: [],
-	next_page: 0
+	response: []
 };
 
+const defaultConfig = {
+    method: 'GET',
+    "headers": {
+           "x-rapidapi-host": "genius.p.rapidapi.com",
+           "x-rapidapi-key": `${API_KEY}`,
+   }, 
+   };
 
 export const useLyricFetch = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
-    const [state, setState] = useState(initialState);
-    const [error, setError] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [state, setState] = useState([]);
 
     
-    const fetchSearch = async(searchTerm='') => {
-		try {
+    const fetchSearch = async(searchTerm) => {
 
-			setError(false)
-			setLoading(true);
+		const url = `${API_SEARCH_URL}?q=${searchTerm}`
+		const response = await (await fetch(url, {...defaultConfig})).json();
 
-			const search = await API.fetchSearch(searchTerm);
+		//const search = await API.fetchSearch(searchTerm);
+		setState({ search: response.response.hits})
 
-			setState({ search: search.response.hits})
-
-		} catch(error) {
-			setError(true);
-
-		}
-		setLoading(false);
 	};
 
     useEffect(() => {
@@ -37,5 +38,5 @@ export const useLyricFetch = () => {
 
 	}, [searchTerm])
 
-    return {state, searchTerm, loading,  setSearchTerm, error}
+    return {state, searchTerm,  setSearchTerm}
 };
