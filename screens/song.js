@@ -10,9 +10,17 @@ function SongScreen({route}) {
     const [error, setError] = useState(null);
     const { id } = route.params;
 
+    const defaultConfig = {
+        method: 'GET',
+        "headers": {
+           "x-rapidapi-host": "genius.p.rapidapi.com",
+           "x-rapidapi-key": `${API_KEY}`,
+       }, 
+       };
+
     useEffect(()=> {
         setLoading(true);
-        fetch(`${API_URL}songs/${id}`)
+        fetch(`${API_URL}songs/${id}`, {...defaultConfig})
             .then((response) => response.json())
             .then((data)=>{
                 if (typeof data !== "object") {
@@ -27,7 +35,7 @@ function SongScreen({route}) {
             })
             .catch((e) => {
                 setLoading(false);
-                setError("Fetchinf movies failed");
+                setError("Fetching movies failed");
             });
     }, []);
 
@@ -38,12 +46,12 @@ function SongScreen({route}) {
             </View>
         );
     if (error) return <Text>ERROR: {error}</Text>;
-
-    const {song_art_image_url, release_date_for_display, stats, primary_artist } = data;
+    
+    console.log(data)
     
     return (
         <View>
-            Clicked
+            <Text>{data.full_title}</Text>
         </View>
     );
 }
