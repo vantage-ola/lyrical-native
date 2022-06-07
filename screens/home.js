@@ -26,9 +26,13 @@ function HomeScreen({ navigation }) {
    }, 
    };
    
-  const handlePress = ({ title, id }) => {};
+   const handlePress = ({ title, id }) =>
+   navigation.navigate("Song", {
+     id,
+     title,
+   });
 
-  useEffect(async() => {
+  useEffect(() => {
     setLoading(true);
     // *insert random artists
     fetch(`${API_URL}artists/2300/songs?sort=popularity&page=1&per_page=48`, {...defaultConfig} )
@@ -78,7 +82,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#e8c310",
     alignItems: "center",
     justifyContent: "center",
   },
