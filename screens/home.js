@@ -4,7 +4,6 @@ import { API_URL,API_KEY } from "../config";
 import MusicSection from "../components/musicSection";
 import { ScrollView } from "react-native-gesture-handler";
 
-
 const initialState = {
 	response: [],
 	next_page: 0
@@ -42,13 +41,13 @@ function HomeScreen({ navigation }) {
 
         setLoading(false);
         setData(data.response.songs);
-        console.log(data)
+        //console.log(data)
 
         if (error) setError(null);
     })
     .catch((e) => {
         setLoading(false);
-        setError("Fetching movies failed");
+        setError("Fetching songs failed");
 
     });
 }, []);
@@ -70,7 +69,7 @@ return (
     <MusicSection
           onPress={handlePress}
           data={data}
-          title="Featured Songs"
+          title="Featured Artist Songs"
         ></MusicSection>
     </ScrollView>
   </SafeAreaView>
