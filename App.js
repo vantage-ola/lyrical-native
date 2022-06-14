@@ -23,7 +23,7 @@ export default function App() {
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
-          },
+          }, headerShown: false,
         })}
         tabBarOptions={{
           activeTintColor: "#e8c310",
