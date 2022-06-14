@@ -35,7 +35,7 @@ function SongScreen({route}) {
             })
             .catch((e) => {
                 setLoading(false);
-                setError("Fetching movies failed");
+                setError("Fetching songs failed");
             });
     }, []);
 
