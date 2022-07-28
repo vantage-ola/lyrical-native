@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
         padding: 10,
       },
       cardTitle: {
-        fontFamily: "AppleSDGothicNeo-SemiBold",
         fontSize: 18,
         color: "white",
       },
