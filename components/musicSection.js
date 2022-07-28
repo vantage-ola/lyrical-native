@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
         color: "#e8c310"
       },
       title: {
-        fontFamily: "AppleSDGothicNeo-SemiBold",
         fontSize: 27,
         fontWeight: "bold",
         marginTop: 20,
