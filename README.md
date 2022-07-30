@@ -1,4 +1,4 @@
-![logo](./src/img/logo-3.png)
+# LYRICAL MOBILE
 
 ## Development
 ---
