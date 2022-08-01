@@ -33,7 +33,7 @@ export default function App() {
         }}
 
       >
-        <Tab.Screen name="Home" component={HomeTab} />
+        {/*<Tab.Screen name="Home" component={HomeTab} /> */}
         <Tab.Screen name="Search" component={SearchTab} />
       </Tab.Navigator>
     </NavigationContainer>
