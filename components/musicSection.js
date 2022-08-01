@@ -15,7 +15,7 @@ function MusicSection({title, data, onPress }) {
          }}
          />
          <View style={styles.cardInnerContainer}>
-             <Text style={styles.cardTitle}>{item.title}</Text> 
+             <Text style={styles.cardTitle}>{item.title}</Text>
          </View>
         </TouchableOpacity>
     );

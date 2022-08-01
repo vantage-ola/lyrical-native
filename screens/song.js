@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 import { API_KEY, API_URL } from "../config";
-import { ActivityIndicator, View, Text } from "react-native";
+import { ActivityIndicator, View, Text, StyleSheet } from "react-native";
 import { Tile } from "react-native-elements";
 
 function SongScreen({route}) {
@@ -51,9 +51,18 @@ function SongScreen({route}) {
     
     return (
         <View>
-            <Text>{data.full_title}</Text>
+            <Text style={styles.fullTitle}>{data.full_title}</Text>            
+            <Text>RELEASE DATE</Text>
+                <Text>{data.release_date_for_display}</Text>
         </View>
     );
 }
+
+const styles= StyleSheet.create({
+    fullTitle: {
+        fontSize: 25,
+
+    }
+});
 
 export default SongScreen;

@@ -52,7 +52,6 @@ function HomeScreen({ navigation }) {
     });
 }, []);
    
-    
 
   if (loading)
    return (
@@ -66,11 +65,23 @@ function HomeScreen({ navigation }) {
 return (
   <SafeAreaView>
     <ScrollView>
+{/*<Carousel data={data} onPress={handlePress}></Carousel>*/}
     <MusicSection
           onPress={handlePress}
           data={data}
           title="Featured Artist Songs"
         ></MusicSection>
+            <MusicSection
+          onPress={handlePress}
+          data={data}
+          title="Featured Artist Songs"
+        ></MusicSection>
+                   <MusicSection
+          onPress={handlePress}
+          data={data}
+          title="Featured Artist Songs"
+        ></MusicSection>
+
     </ScrollView>
   </SafeAreaView>
 )
